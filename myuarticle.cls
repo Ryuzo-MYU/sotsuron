@@ -1,0 +1,41 @@
+% ================================
+% 宮城大学 卒論用クラスファイル
+% ================================
+\LoadClassWithOptions{jlreq}
+
+% 数式
+\RequirePackage{amsmath,amsfonts}
+\RequirePackage{bm}
+% 画像
+\RequirePackage{graphicx}
+% 表 中央揃え
+\RequirePackage{array}
+% ページ番号（ノンブル）なし
+\RequirePackage{float}
+
+\pagestyle{empty}
+
+% セクションの外観設定
+\ModifyHeading{section}{
+	font={\normalfont\bfseries},
+	label_format={\thesection.}, % sectionのみ後ろにドットを追加
+	lines=1,
+	after_label_space=1.8em,
+}
+\ModifyHeading{subsection}{
+	font={\normalfont\bfseries},
+	lines=1,
+	after_label_space=1.2em,
+}
+\ModifyHeading{subsubsection}{
+	font={\normalfont\bfseries},
+	lines=1,
+	after_label_space=0.2em,
+}
+% キャプション設定
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Table.}
+\jlreqsetup{
+	caption_font={\normalfont\sffamily},
+	caption_label_font={\normalfont\sffamily},
+}
