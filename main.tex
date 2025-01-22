@@ -50,7 +50,66 @@ Interactionの分野では，Breazeal\cite{C.Breazeal-2004-SocialInteractionsHRI
 \section{本システムの実装}
 本システムは，センシングシステム，評価システム，アクション生成システム，ロボット制御システムから構成される．ハードウェアは，センシングデバイスにM5StickC(M5Stack社)を，ロボットにtoio(SONY社)を選定した．
 
-本システムによってロボットが動作している様子を図Xに示す．今回の動作検証では，人間の気温，猫の気温，バナナの気温および湿度の3テーマを設定した．人間の適温は18～28℃\cite{JianZhuWuHuanJingWeiShengGuanLiJiZhunnituite|HouShengLaoDongSheng}，猫の適温は30～38℃\cite{stellaEnvironmentalAspectsDomestic2016}と設定した．バナナは生育状態ではなく，室内で食品として保存する場合として，気温を14～20℃\cite{--バナナの}，湿度を45～85\%\cite{--JISZ87031983試験}とした．
+本システムによってロボットが動作している様子を図\ref{tab:theme-test}に示す．今回の動作検証では，人間の気温，猫の気温，バナナの気温および湿度の3テーマを設定した．人間の適温は18～28℃\cite{JianZhuWuHuanJingWeiShengGuanLiJiZhunnituite|HouShengLaoDongSheng}，猫の適温は30～38℃\cite{stellaEnvironmentalAspectsDomestic2016}と設定した．バナナは生育状態ではなく，室内で食品として保存する場合として，気温を14～20℃\cite{--バナナの}，湿度を45～85\%\cite{--JISZ87031983試験}とした．
+
+% 実験風景
+% ここに置かないとページトップに段抜き表示できなかった
+\setcounter{figure}{2}
+\begin{figure*}[t]
+  \centering
+  \label{tab:theme-test}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    % 1行目
+    \sffamily ペットと遊ぶ                                                & \sffamily 充電ドックに戻る & \sffamily ちょっかいをかける & \sffamily ゴミを発見する & \sffamily その他 \\
+    \hline \hline
+    % 2行目
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/cat_before.jpg}
+    \end{minipage}    &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/doc_before.jpg}
+    \end{minipage}    &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/pet_before.jpg}
+    \end{minipage}    &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/vacuum_before.jpg}
+    \end{minipage} &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/fall.jpg}
+    \end{minipage}
+    \\ \hline
+    % 3行目
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/cat_after.jpg}
+    \end{minipage}     &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/doc_after.jpg}
+    \end{minipage}     &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/pet_after.jpg}
+    \end{minipage}     &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/vacuum_after.jpg}
+    \end{minipage}  &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/water.jpg}
+    \end{minipage}
+    \\ \hline
+  \end{tabular}
+  \caption{仮置き}
+\end{figure*}
 
 本システムの構造を図\ref{fig:system-structure}に示す．
 
