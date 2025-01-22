@@ -48,11 +48,7 @@ Interactionの分野では，Breazeal\cite{C.Breazeal-2004-SocialInteractionsHRI
 はじめに本システムが，センサーを通じて生活空間の環境データを取得する．他者を基準とした評価，評価に応じて快・不快をアピールするなどの行動命令を現実空間のロボットに送信する．ロボットは行動命令に従って人間にアピールする．それを見た人間が環境や他者に対して働きかけることで，他者にとってより快適な環境を得るシステムとなっている．
 
 \section{本システムの実装}
-本システムは，センシングシステム，評価システム，アクション生成システム，ロボット制御システムから構成される．ハードウェアは，センシングデバイスにM5StickC(M5Stack社)を，ロボットにtoio(SONY社)を選定した．
-
-本システムによってロボットが動作している様子を図Xに示す．今回の動作検証では，人間の気温，猫の気温，バナナの気温および湿度の3テーマを設定した．人間の適温は18～28℃\cite{JianZhuWuHuanJingWeiShengGuanLiJiZhunnituite|HouShengLaoDongSheng}，猫の適温は30～38℃\cite{stellaEnvironmentalAspectsDomestic2016}と設定した．バナナは生育状態ではなく，室内で食品として保存する場合として，気温を14～20℃\cite{--バナナの}，湿度を45～85\%\cite{--JISZ87031983試験}とした．
-
-本システムの構造を図\ref{fig:system-structure}に示す．
+本システムは，センシングシステム，評価システム，アクション生成システム，ロボット制御システムから構成される．ハードウェアは，センシングデバイスにM5StickC(M5Stack社)を，ロボットにtoio(SONY社)を選定した．本システムの構造を図\ref{fig:system-structure}に示す．
 
 \fboxsep=0pt            %画像と枠線をくっつける．
 \fboxrule=1pt            %枠線の太さを1ptにする．
