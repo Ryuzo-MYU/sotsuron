@@ -42,15 +42,27 @@ twocolumn,number_of_lines=49, line_length=26zw]{myuarticle}
   \label{fig:system-flow}
 \end{figure}
 
-
-
 \section{本システムの実装}
 本システムは，センシングシステム，評価システム，アクション生成システム，ロボット制御システムから構成される．ハードウェアは，センシングデバイスにM5StickC(M5Stack社)を，ロボットにtoio(SONY社)を用いた．
 
 本システムでは，各主体（人間，動物，物体など）について，その対象にとって最適な環境条件を設定し，現在の環境がその条件からどの程度離れているかに応じてロボットの動作を変化させる．
-これらの条件に基づき、環境センサーから得られた測定値と最適条件との差異を評価し、ロボットの動作を決定する。
+これらの条件に基づき，環境センサーから得られた測定値と最適条件との差異を評価し，ロボットの動作を決定する．
 本システムの構造を図\ref{fig:system-structure}に示す．
 
+\setcounter{figure}{2}
+\begin{figure*}[t]
+  \centering
+  \begin{tabular}{ccc}
+    \includegraphics[width=0.25\textwidth]{resources/human.png} &
+    \includegraphics[width=0.25\textwidth]{resources/cat.png} &
+    \includegraphics[width=0.25\textwidth]{resources/banana.png} \\
+    人間の気温評価 & 猫の気温評価 & バナナの保存環境評価
+  \end{tabular}
+  \caption{システム動作検証の様子}
+  \label{fig:system-test}
+\end{figure*}
+
+\setcounter{figure}{1}
 \fboxsep=0pt            %画像と枠線をくっつける．
 \fboxrule=1pt            %枠線の太さを1ptにする．
 \begin{figure}[h]
@@ -77,57 +89,25 @@ twocolumn,number_of_lines=49, line_length=26zw]{myuarticle}
 %ロボット制御システムでは，実機toioとシステム上のtoioを識別するためのデータ管理および，アクション生成システムから取得したアクションの実行を行う．
 
 \section{システムの動作検証}
-本システムによってロボットが動作している様子を図\ref{tab:theme-test}に示す．
-今回の検証では，以下の3つの主体とその最適環境条件を設定した：
-\begin{itemize}
-  \item 人間の気温評価：18～28℃\cite{JianZhuWuHuanJingWeiShengGuanLiJiZhunnituite|HouShengLaoDongSheng}
-  \item 猫の気温評価：30～38℃\cite{stellaEnvironmentalAspectsDomestic2016}
-  \item バナナの保存環境評価：気温14～20℃\cite{--バナナの}，湿度45～85\%\cite{--JISZ87031983試験}（生育状態ではなく，室内での食品保存条件として設定）
-\end{itemize}
+本システムによってロボットが動作している様子を図\ref{fig:system-test}に示す．
 
-\begin{figure*}[t]
-  \centering
-  \label{tab:theme-test}
-  \begin{tabular}{|c|c|c|c|}
-    \hline
-    & \sffamily 人間の気温評価 & \sffamily 猫の気温評価 & \sffamily バナナの保存環境評価 \\
-    \hline
-    快適 &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/cat_before.jpg}
-    \end{minipage}    &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/doc_before.jpg}
-    \end{minipage}    &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/pet_before.jpg}
-    \end{minipage}
-    \\ \hline
-    % 3行目
-    不快 &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/cat_after.jpg}
-    \end{minipage}     &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/doc_after.jpg}
-    \end{minipage}     &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/pet_after.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{仮置き}
-\end{figure*}
+本システムの動作検証では，人間，猫，バナナの3つを評価主体として動作検証を行った．
+
+人間を評価主体とした場合，気温18～28℃\cite{JianZhuWuHuanJingWeiShengGuanLiJiZhunnituite|HouShengLaoDongSheng}を最適環境条件とし，快適時には直線的な移動，不快時には蛇行移動や激しい移動によってアピールを行う．
+
+猫については，気温30～38℃\cite{stellaEnvironmentalAspectsDomestic2016}を最適環境条件とし，快適時はじっとして動かず，不快時には不規則な軌道や頻繁な方向転換で表現する．
+
+バナナについては，気温14～20℃\cite{--バナナの}，湿度45～85\%\cite{--JISZ87031983試験}を最適環境条件とし，快適時は定点でのゆっくりな回転，不快時にはランダムな往復運動を行う．これらの動作パターンは，環境条件からの逸脱度に応じて変化する．
+
+本システムの動作検証を通じて，以下の課題が明らかになった．第一に，人間を評価主体とする場合，個人差や状況による快適条件の変動に対応する必要がある．そのため，ユーザーがリアルタイムに評価基準を調整できるインターフェースの実装が求められる．
+
+第二に，猫などの移動する主体の評価において，センシング位置と主体の位置の不一致という問題が生じた．主体の追跡は技術的に困難であるため，温度や湿度など，空間的な変化が緩やかな環境要因を中心に評価を行い，人間の近傍でアピールする方式への変更を検討する必要がある．
+
+第三に，バナナなどの生鮮品を評価対象とする場合，追熟過程による最適保存条件の変化に対応できていないことが判明した．この課題に対しては，現在のような即時的な評価だけでなく，環境データの長期的な記録と分析機能を実装し，対象の状態変化に応じた評価基準の調整が必要である．
 
 \section{まとめと今後の展望}%{システムの制約と展望}
 %本システムは，Bluetooth通信を用いているため，屋内での使用を前提とし，通信可能な範囲内での動作に限られる．また，評価対象は基準が明確で計測可能なものに限定される．
-今後の展開として，ロボット間の協調動作の実装や，より正確な環境評価のためのセンシング手法の改善が考えられる．さらに，異なるセンサーやロボットを組み合わせることで，新たなユーザー体験の創出も期待できる．
+今後の展開として，ロボット間の協調動作の実装や，より正確な環境評価のためのセンシング手法の改善が考えられる．さらに，異なるセンサーやロボットを組み合わせることで，新たなユーザー体験の創出も期待できる．\\
 
 %\section{おわりに}
 %本研究では，環境データを他者の視点から評価し，ロボットの身体的動作を通じて表現するシステムを開発した．M5StickCとtoioを用いたプロトタイプシステムの実装により，他者にとっての快・不快を直感的に理解できるインタフェースを実現した．特に，『弱いロボット』の概念を取り入れることで，ユーザーを自然にシステムフローに組み込むことができた．
@@ -136,7 +116,10 @@ twocolumn,number_of_lines=49, line_length=26zw]{myuarticle}
 
 %  ----- 参考文献 -----
 % 参考文献リストの「参考文献」のスタイル
-\renewcommand{\refname}{　参考文献}
-\bibliography{ref}
+\renewcommand{\refname}{\normalsize 7.　　参考文献}
+{
+  \footnotesize
+  \bibliography{ref}
+}
 \bibliographystyle{junsrt}
 \end{document}
