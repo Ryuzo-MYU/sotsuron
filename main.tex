@@ -3,34 +3,33 @@ twocolumn,number_of_lines=49, line_length=26zw]{myuarticle}
 
 \begin{document}
 
-\title{{\LARGE\bfseries\gtfamily 環境情報のセンシングを用いた他者の環境評価を表現するロボットシステム}}
+\title{{\Large\bfseries\gtfamily 環境情報のセンシングを用いた他者の環境評価を表現するロボットシステム}}
 \author{\\\ 22120165　中村龍造 \\ （指導教員 : 佐藤宏樹）\\ \\}
 \date{}
 \maketitle
 
 \section{はじめに}
-私たちの周りには、人間以外にも多くの存在が共存している。それらの存在は、それぞれ独自の感覚や基準で環境を捉えているが、私たちはその感覚を直接共有することができない。このような「他者」の経験を理解し、共感することは、多様な存在との共生を考える上で重要な課題となっている。
+生活空間には，人間以外にも多くの存在が共存している．それらの存在は，それぞれ独自の感覚や基準で環境を捉えているが，その感覚を直接共有することはできない．このような「他者」の経験を理解し，共感することは，多様な存在との共生を考える上で重要な課題となっている．
 
-本稿では、取得した環境データに対して、人間、動植物、非生物などといった複数の他者からの評価基準を設定し、評価結果をロボットの身体的動作を通して表現するシステム(以下「本システム」)を提案する。本システムを通じて、ユーザーが他者にとっての快適さを知り、他者への理解、関心を深めることで、多様な存在との対話の機会創出を目指す。
+本稿では，取得した環境データに対して，人間，動植物，非生物などといった複数の他者からの評価基準を設定し，評価結果をロボットの身体的動作を通して表現するシステム(以下「本システム」)を提案する．本システムを通じて，ユーザーが他者にとっての快適さを知り，他者への理解，関心を深めることで，多様な存在との対話の機会創出を目指す．
 
 \section{関連研究と課題}
 
-環境センシング分野では，IoTやセンサー技術の発展により，室内環境の継続的なモニタリングが可能となっており\cite{Saini-2020-IndoorAirQualityMonitoring}，個々人の主観による評価も必要とされている\cite{Coulby-2020-ScopingReviewTechnologicalApproaches}．
+他者視点の表現に関する取り組みとしては，In the Eyes of the Animal\cite{Dezeen-2015-MarshmallowLaserFeastsEyes}のようなVRによる体験の共有や，rapoptosis\cite{--ソンヨン}のようなモノの自立的な意思決定の表現が提案されている．しかしこれらの手法は一時的な体験や特定の対象に限定されており，生活空間における継続的な他者視点の理解を支援することは難しい．
 
-他者視点の表現に関する取り組みとしては，「In the Eyes of the
-Animal」\cite{Dezeen-2015-MarshmallowLaserFeastsEyes}やrapoptosis\cite{--ソンヨン}がある．また，Human
-Robot
-Interactionの分野では，Breazeal\cite{C.Breazeal-2004-SocialInteractionsHRIRobot}が人間と協働するパートナーとしてのロボットのあり方を提示している．
-
-以上から本研究では，人間，動植物，非生物など，様々な他者を基準に，それらから見た環境の快・不快を，ロボットの身体的動作で表現するシステムを開発する．
+人間を対象とした場合でも，環境への評価は個々人で差異があり，客観的指標による評価のみならず，主観での評価を取り入れる必要があると言われている\cite{Coulby-2020-ScopingReviewTechnologicalApproaches}．
 
 \section{システム要件}
-本システムの開発にあたって，次の3点を要件とする．
-\begin{itemize}
-  \item ロボット：自身が代弁する他者の特徴が動きに現れている
-  \item 評価システム：他者基準の評価が適切に行われる
-  \item 全体：ユーザー自身とそれ以外との環境の受け取り方の違いを体験することができる
-\end{itemize}
+
+上記の課題を踏まえ，本研究では人間，動植物，非生物など，様々な他者を基準に，それらから見た環境の快・不快をロボットの身体的動作で表現するシステムを開発する．ロボットという物理的な存在を用いることで，生活空間における他者の視点を継続的に表現し，共生への理解を深めることを目指す．
+
+このような目的を達成するため，本システムの開発にあたって以下の3点を要件とする：
+
+\begin{description}
+  \item[継続的な表現:] 生活空間において，ロボットが常に存在し続けることで，環境変化に応じた他者の評価を途切れることなく表現できること
+  \item[多様な他者の表現:] 人間，動植物，非生物など様々な他者の環境評価基準を設定し，それぞれの特徴を反映した動作で表現できること
+  \item[日常的な理解支援:] ユーザーが特別な操作をすることなく，生活空間における他者との環境認識の違いを自然に理解できること
+\end{description}
 
 \subsection{全体のフロー}
 本システムは，ユーザー，環境，センサー，ロボット，本システムの5つからなる．システム全体のフローを図\ref{fig:system-flow}に示す．
@@ -50,65 +49,9 @@ Interactionの分野では，Breazeal\cite{C.Breazeal-2004-SocialInteractionsHRI
 \section{本システムの実装}
 本システムは，センシングシステム，評価システム，アクション生成システム，ロボット制御システムから構成される．ハードウェアは，センシングデバイスにM5StickC(M5Stack社)を，ロボットにtoio(SONY社)を用いた．
 
-本システムによってロボットが動作している様子を図\ref{tab:theme-test}に示す．今回の動作検証では，人間の気温，猫の気温，バナナの気温および湿度の3テーマを設定した．人間の適温は18～28℃\cite{JianZhuWuHuanJingWeiShengGuanLiJiZhunnituite|HouShengLaoDongSheng}，猫の適温は30～38℃\cite{stellaEnvironmentalAspectsDomestic2016}と設定した．バナナは生育状態ではなく，室内で食品として保存する場合として，気温を14～20℃\cite{--バナナの}，湿度を45～85\%\cite{--JISZ87031983試験}とした．
+本システムでは，各主体（人間，動物，物体など）について，その対象にとって最適な環境条件を設定し，現在の環境がその条件からどの程度離れているかに応じてロボットの動作を変化させる．
 
-% 実験風景
-\setcounter{figure}{2}
-\begin{figure*}[t]
-  \centering
-  \label{tab:theme-test}
-  \begin{tabular}{|c|c|c|c|c|}
-    \hline
-    % 1行目
-    \sffamily ペットと遊ぶ                                                & \sffamily 充電ドックに戻る & \sffamily ちょっかいをかける & \sffamily ゴミを発見する & \sffamily その他 \\
-    \hline \hline
-    % 2行目
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/cat_before.jpg}
-    \end{minipage}    &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/doc_before.jpg}
-    \end{minipage}    &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/pet_before.jpg}
-    \end{minipage}    &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/vacuum_before.jpg}
-    \end{minipage} &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/fall.jpg}
-    \end{minipage}
-    \\ \hline
-    % 3行目
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/cat_after.jpg}
-    \end{minipage}     &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/doc_after.jpg}
-    \end{minipage}     &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/pet_after.jpg}
-    \end{minipage}     &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/vacuum_after.jpg}
-    \end{minipage}  &
-    \begin{minipage}[c]{0.15\textwidth}
-      \centering
-      \includegraphics[width=0.9\textwidth]{resources/water.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{仮置き}
-\end{figure*}
+これらの条件に基づき、環境センサーから得られた測定値と最適条件との差異を評価し、ロボットの動作を決定する。
 
 本システムの構造を図\ref{fig:system-structure}に示す．
 
@@ -130,23 +73,67 @@ Interactionの分野では，Breazeal\cite{C.Breazeal-2004-SocialInteractionsHRI
 評価システムでは，センサーシステムから環境データを取得・評価し，評価データを生成する．評価データは，環境データと評価基準値との差をスコアとして所持している．対象データの評価では，例えば人間に適した気温であれば18～24℃などと，あらかじめ対象データの主体にとって最適な範囲を設定する．現在の気温が最適範囲から外れた場合，上回れば正の，下回れば負のスコアをもった評価データを生成する．システム開発者は評価主体とその評価対象ごとに，個別の評価システムを実装する必要がある．
 
 \subsection{アクション生成システム}
-アクション生成システムでは，評価システムから取得した評価データをもとに，評価に応じたアクション命令をロボット制御システムへ送る．アクション開発者は，主体および対象の環境データごとにアクションを作成しておく必要がある．サンプルとしてデザインしたアクションには，岡田ら\cite{岡田-2017-弱いロボ}の「弱いロボット」の「よたよた」とした動きを取り入れることで，効果的にユーザーに働きかけることを狙った．
+アクション生成システムでは，評価システムから取得した評価データをもとに，評価に応じたアクション命令をロボット制御システムへ送る．アクション開発者は，主体および対象の環境データごとにアクションを作成しておく必要がある．本システムのアクションは，岡田ら\cite{岡田-2017-弱いロボ}の「弱いロボット」の概念を取り入れてデザインした．「弱いロボット」は，人間の介入や支援を引き出す手法として「よたよた」とした動きを用いている．本システムでも，この考え方に基づき，環境が快適でない場合のアクションとして，直線的に移動せず，わずかに蛇行しながら進んだり，時折立ち止まったりする動きを実装した．このような不安定な動きによって，ロボットが困っているような印象を与え，ユーザーが環境を確認し，調整するきっかけとなることを期待している．
 
 アクションは「コマンド」のキューで構成される．コマンドはロボット動作用のより低レベルな命令と，動作の所要時間を所持しており，一連のコマンドを実行することで，1つの意味あるアクションを表現する．
 
 \subsection{ロボット制御システム}
 ロボット制御システムでは，実機toioとシステム上のtoioを識別するためのデータ管理および，アクション生成システムから取得したアクションの実行を行う．
 
-\section{本システムの制約}
+\section{システムの動作検証}
+本システムによってロボットが動作している様子を図\ref{tab:theme-test}に示す．
 
-提案にあたって，本システムの制約について述べる．
+今回の検証では，以下の3つの主体とその最適環境条件を設定した：
+\begin{itemize}
+  \item 人間の気温評価：18～28℃\cite{JianZhuWuHuanJingWeiShengGuanLiJiZhunnituite|HouShengLaoDongSheng}
+  \item 猫の気温評価：30～38℃\cite{stellaEnvironmentalAspectsDomestic2016}
+  \item バナナの保存環境評価：気温14～20℃\cite{--バナナの}，湿度45～85\%\cite{--JISZ87031983試験}（生育状態ではなく，室内での食品保存条件として設定）
+\end{itemize}
 
-エージェントは，本システムとの通信が可能な範囲に配置する必要がある．今回はBluetooth通信を使用しているため，物理的な仕切りなどによって通信が不安定になりやすい．またエージェントの動作がユーザーから認識できる場所にある必要がある．想定しているエージェントの動作環境は屋内であり，屋外の生活環境での使用は考えられていない．
+\begin{figure*}[t]
+  \centering
+  \label{tab:theme-test}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    & \sffamily 人間の気温評価 & \sffamily 猫の気温評価 & \sffamily バナナの保存環境評価 \\
+    \hline
+    快適 &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/cat_before.jpg}
+    \end{minipage}    &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/doc_before.jpg}
+    \end{minipage}    &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/pet_before.jpg}
+    \end{minipage}
+    \\ \hline
+    % 3行目
+    不快 &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/cat_after.jpg}
+    \end{minipage}     &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/doc_after.jpg}
+    \end{minipage}     &
+    \begin{minipage}[c]{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{resources/pet_after.jpg}
+    \end{minipage}
+    \\ \hline
+  \end{tabular}
+  \caption{仮置き}
+\end{figure*}
 
-表現の面では，ロボットが持つモジュールによって可能なアクションが異なる．また本システムが対象とできる他者は，評価基準が明確で，評価データがセンサーによって取得可能なものに限られる．同時に制御できるロボットの数にも制限があるため，大量の他者を同時に表現することは難しい．
+\section{システムの制約と展望}
+本システムは，Bluetooth通信を用いているため，屋内での使用を前提とし，通信可能な範囲内での動作に限られる．また，評価対象は基準が明確で計測可能なものに限定される．
 
-\section{今後の展望}
-本システムの展望として，アクションデザインでは，ロボットどうしの協調やより効果的な動作のデザイン検討が考えられる．センシング面では，快・不快をより正確に表現するデータの検討や，キャリブレーションの追加等が可能である．また異なるセンサー，ロボットを使用することで，新しいユーザー体験を生み出すことが期待される．
+今後の展開として，ロボット間の協調動作の実装や，より正確な環境評価のためのセンシング手法の改善が考えられる．さらに，異なるセンサーやロボットを組み合わせることで，新たなユーザー体験の創出も期待できる．
 
 \section{おわりに}
 本研究では，環境データを他者の視点から評価し，ロボットの身体的動作を通じて表現するシステムを開発した．M5StickCとtoioを用いたプロトタイプシステムの実装により，他者にとっての快・不快を直感的に理解できるインタフェースを実現した．特に，『弱いロボット』の概念を取り入れることで，ユーザーを自然にシステムフローに組み込むことができた．
