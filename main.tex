@@ -4,7 +4,7 @@ twocolumn,number_of_lines=49, line_length=26zw]{myuarticle}
 \begin{document}
 
 \title{{\Large\bfseries\gtfamily 環境情報のセンシングを用いた他者の環境評価を表現するロボットシステム}}
-\author{\\\ 22120165　中村龍造 \\ （指導教員 : 佐藤宏樹）\\ \\}
+\author{\\\ 22120165　中村龍造 \\（指導教員 : 佐藤宏樹）\\ \\}
 \date{}
 \maketitle
 
@@ -26,9 +26,9 @@ VRによる体験の共有や\cite{--EyesAnimal}，
 上記の課題を踏まえ，本研究では人間，動植物，非生物などの他者を基準に，他者から見た環境の快・不快をロボットの身体的動作で表現するシステムを開発する．ロボットという物理的な存在によって，他者基準の評価を継続的に表現し，ユーザーの他者への理解を深めることを目指す．本システムの開発にあたり次の3点を要件とする．
 
 \begin{description}
-  \item[継続的な表現：] 生活空間において，ロボットが常に存在し続けることで，環境変化に応じた他者の評価を途切れることなく表現できること
-  \item[多様な他者の表現：] 人間，動植物，非生物など様々な他者の環境評価基準を設定し，それぞれの特徴を反映した動作で表現できること
-  \item[日常的な理解支援：] ユーザーが特別な操作をすることなく，生活空間における他者との環境認識の違いを自然に理解できること
+  \item[継続的な表現：]生活空間において，ロボットが常に存在し続けることで，環境変化に応じた他者の評価を途切れることなく表現できること
+  \item[多様な他者の表現：]人間，動植物，非生物など様々な他者の環境評価基準を設定し，それぞれの特徴を反映した動作で表現できること
+  \item[日常的な理解支援：]ユーザーが特別な操作をすることなく，生活空間における他者との環境認識の違いを自然に理解できること
 \end{description}
 
 \subsection{全体のフロー}
@@ -48,10 +48,10 @@ VRによる体験の共有や\cite{--EyesAnimal}，
 \begin{figure*}[t]
   \centering
   \begin{tabular}{cccc}
-    \includegraphics[width=0.17\textwidth]{resources/human.png} &
-    \includegraphics[width=0.17\textwidth]{resources/cat.png} &
-    \includegraphics[width=0.17\textwidth]{resources/banana.png} &
-    \includegraphics[width=0.17\textwidth]{resources/clothes.png} \\
+    \includegraphics[width=0.16\textwidth]{resources/human.png} &
+    \includegraphics[width=0.16\textwidth]{resources/cat.png} &
+    \includegraphics[width=0.16\textwidth]{resources/banana.png} &
+    \includegraphics[width=0.16\textwidth]{resources/clothes.png} \\
     人間の気温評価 & 猫の気温評価 & バナナの保存環境評価 & 服の保存環境評価
   \end{tabular}
   \caption{システム動作検証の様子}
@@ -77,9 +77,13 @@ VRによる体験の共有や\cite{--EyesAnimal}，
 環境が快適でない場合のアクションとして，直線的に移動せず，わずかに蛇行しながら進んだり，時折立ち止まったりする動きを実装した．不安定な動きによって，ロボットが困っているような印象を与え，ユーザーが環境を確認し，調整するきっかけとなることを期待している．動作イメージを図\ref{fig:action-image}に示す．
 
 \begin{figure}[h]
-  \centering
-  \includegraphics[keepaspectratio, width=1.0\columnwidth]{resources/action-image.png}
-  \caption[short]{動作イメージのイラスト}
+ \centering
+  \begin{tabular}{cc}
+    \includegraphics[width=0.27\textwidth]{resources/action-image-2.png} &
+    \includegraphics[width=0.12\textwidth]{resources/action-image-1.png} \\
+    蛇行する動き & 時折立ち止まる動き
+  \end{tabular}
+  \caption{ロボットの動作イメージ}
   \label{fig:action-image}
 \end{figure}
 
@@ -89,6 +93,7 @@ VRによる体験の共有や\cite{--EyesAnimal}，
 %ロボット制御システムでは，実機toioとシステム上のtoioを識別するためのデータ管理および，アクション生成システムから取得したアクションの実行を行う．
 
 \section{システムの動作検証}
+\subsection{評価主体の設定}
 本システムによってロボットが動作している様子を図\ref{fig:system-test}に示す．今回の動作検証では，人間，猫，バナナ，服の4種を評価主体とした．
 
 人間は，気温18～28℃を最適環境条件とした．快適時には直線的な移動，不快時には蛇行移動や激しい移動によってユーザーへのアピールを行う．
@@ -112,7 +117,9 @@ VRによる体験の共有や\cite{--EyesAnimal}，
 %今後は，より多様な他者の表現や，ロボット同士の協調動作の実装など，システムの拡張を進めていく．
 
 %  ----- 参考文献 -----
-\renewcommand{\refname}{\normalsize 7.　　参考文献}
+\vspace{5pt}
+\renewcommand{\refname}{\normalsize 7.　　参考文献
+\vspace{5pt}}
 {
   \footnotesize
   \bibliography{ref}

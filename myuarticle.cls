@@ -3,6 +3,19 @@
 % ================================
 \LoadClassWithOptions{jlreq}
 
+\RequirePackage{luatexja-fontspec}
+\setmainfont[Ligatures={Rare,TeX}]{Times-New-Roman}
+% \setmainjfont[
+% 	YokoFeatures       = {JFM=jlreq},
+% 	TateFeatures       = {JFM=jlreqv},
+% 	BoldFont           = MS-Gothic,
+% 	BoldFeatures       = {FakeBold=2},
+% 	ItalicFont         = MS-Mincho,
+% 	ItalicFeatures     = {FakeSlant=0.33},
+% 	BoldItalicFont     = MS-Gothic,
+% 	BoldItalicFeatures = {FakeBold=2, FakeSlant=0.33}
+% ]{MS-Mincho}
+
 % 数式
 \RequirePackage{amsmath,amsfonts}
 \RequirePackage{bm}
@@ -15,8 +28,6 @@
 % URL処理
 \RequirePackage{hyperref}
 \RequirePackage{url}
-
-\RequirePackage{multicol}
 
 \pagestyle{empty}
 
@@ -48,7 +59,7 @@
 
 % hyperref設定
 \hypersetup{
-  colorlinks=filse,
+  colorlinks=false,
   linkcolor=black,
   urlcolor=black
 }
